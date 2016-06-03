@@ -1,0 +1,15 @@
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">{{ form.title }}</div>
+    <div class="col-sm-12">{{ form.body }}</div>
+    <div class="col-sm-12">
+        <textarea id="code" name="code" rows="10">{{form.code}}</textarea></div>
+    <div class="col-sm-12">{{ form.pub_date }}</div>
+    <div class="col-sm-12">{{ form.likes }}</div>
+    <div class="col-sm-12">{{ form.image }}</div>
+    <div class="col-sm-offset-2 col-sm-10">
+        <span class="text-danger medium">{{ field.errors }}</span>
+    </div>
+</div>
+{% endblock %}

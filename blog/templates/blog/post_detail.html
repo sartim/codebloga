@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+{% block content %}
+<div class="container">
+   <div class="row">
+      <di class="col-md-3">
+         <div class="panel">
+            <div class="panel-heading"><h4></h4></div>
+            <div class="panel-body">
+               <img src="{{ post.image.url}}" width="100" height="100" alt="">
+               <div class="row">
+                  <div class="col-sm-6">
+                     {{ post.body }}
+                  </div>
+                  <div class="col-sm-6">
+                     {{ post.pub_date }}
+                  </div>
+               </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <a class="btn btn-block btn-primary" href="/">Blog</a>
+                    </div>
+                    <div class="col-sm-4">
+                        <a class="btn btn-block btn-primary" href="{% url 'blog:post-update' post.id %}">Update</a>
+                    </div>
+                    <div class="col-sm-4">
+                      <a class="btn btn-block btn-primary" href="{% url 'blog:post-delete' post.id %}">Delete</a>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </di>
+      <div class="col-md-9">
+         <textarea id="code" name="code" rows="5">
+      {{ post.code }}
+      </textarea>
+      </div>
+   </div>
+<br />
+</div>
+{% endblock %}
