@@ -2,17 +2,19 @@
 {% block content %}
 <div class="container">
    <div class="row">
-      <di class="col-md-3">
+      <div class="col-md-3">
          <div class="panel">
             <div class="panel-heading"><h4></h4></div>
             <div class="panel-body">
+                {% if post.image %}
                <img src="{{ post.image.url}}" width="100" height="100" alt="">
+                {% endif %}
                <div class="row">
                   <div class="col-sm-6">
-                     {{ post.body }}
+                     {{ post.title }}
                   </div>
                   <div class="col-sm-6">
-                     {{ post.pub_date }}
+                     {{ post.publish }}
                   </div>
                </div>
                 <div class="row">
@@ -28,13 +30,16 @@
                 </div>
             </div>
          </div>
-      </di>
-      <div class="col-md-9">
-         <textarea id="code" name="code" rows="5">
-      {{ post.code }}
-      </textarea>
       </div>
-   </div>
-<br />
+       <div class="col-md-9">
+
+      {{ post.content }}
+      </div>
+      <div class="col-md-9">
+        <div id="editor">
+            {{ post.code }}
+        </div>
+      </div>
+    </div>
 </div>
 {% endblock %}

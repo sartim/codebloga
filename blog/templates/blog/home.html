@@ -1,11 +1,15 @@
 {% extends 'blog/base.html' %}
+{% block page-title %}Blog{% endblock %}
+{% block page-name %}Home{% endblock%}
 {% block content %}
 
 <div class="container">
     {% for post in all_posts %}
 <div class="row">
     <div class="col-md-4">
+        {% if post.image %}
         <img src="{{ post.image.url }}" style="width:100px; height:100px" class="img-responsive">
+        {% endif %}
     </div>
     <div class="col-md-8">
         <div class="panel panel-primary">
@@ -13,22 +17,12 @@
                 <h5><a href="{% url 'blog:post-detail' post.id %}">View</a></h5>
             </div>
             <div class="panel-body">
+                {{ post.user }}
                 {{ post.title }}
-                {{ post.body }}
             </div>
         </div>
     </div>
 </div><hr />
 {% endfor %}
-</div>
-
-<div class="container">
-    <textarea id="code" name="code" rows="5">
-
-
-
-    </textarea>
-
-<br />
 </div>
 {% endblock %}

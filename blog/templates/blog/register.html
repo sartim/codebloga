@@ -1,0 +1,49 @@
+﻿{% extends "blog/base.html" %}
+
+{% block content %}
+<h2>{{ title }}</h2>
+<div class="row">
+    <div class="col-md-8">
+        <h3>Fill in the following details</h3>
+        <form name="register" id="registerForm" action="/" methos="post" novalidate>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Full Name:</label>
+                    <input type="text" class="form-control" id="fullname" required data-validation-required-message="Please enter your full name.">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>User Name:</label>
+                    <input type="text" class="form-control" id="username" required data-validation-required-message="Please enter your user name.">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Password:</label>
+                    <input type="text" class="form-control" id="password" required data-validation-required-message="Please enter your password.">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+            <div class="control-group form-group">
+                <div class="controls">
+                    <label>Email:</label>
+                    <input type="text" class="form-control" id="email" required data-validation-required-message="Please enter your email.">
+                    <p class="help-block"></p>
+                </div>
+            </div>
+             <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+
+    {% load staticfiles %}
+<script src="{% static 'app/scripts/jquery.validate.min.js' %}"></script>
+
+{% endblock %}

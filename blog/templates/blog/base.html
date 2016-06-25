@@ -8,10 +8,10 @@
         <!-- START @META SECTION -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="description" content="Blankon is a theme fullpack admin template powered by Twitter bootstrap 3 front-end framework. Included are multiple example pages, elements styles, and javascript widgets to get your project started.">
-        <meta name="keywords" content="admin, admin template, bootstrap3, clean, fontawesome4, good documentation, lightweight admin, responsive dashboard, webapp">
-        <meta name="author" content="Djava UI">
-        <title>BLOG SINGLE | BLANKON - Fullpack Admin Theme</title>
+        <meta name="description" content="Codebloga is a blog post web application developed with Django framework for code blog posts">
+        <meta name="keywords" content="TDS, codebloga, blog, code blog, blog, code, django, django blog, admin">
+        <meta name="author" content="TDS">
+        <title>{% block title %}{% endblock %}</title>
         <!--/ END META SECTION -->
         {% load staticfiles %}
         <!-- START @FAVICONS -->
@@ -34,7 +34,7 @@
 
         <!-- START @PAGE LEVEL STYLES -->
         <link href="{% static 'blog/assets/global/plugins/bower_components/fontawesome/css/font-awesome.min.css' %}" rel="stylesheet">
-        <link href="{% static 'blog/assets/global/plugins/bower_components/animate.css/animate.min.css" rel="stylesheet' %}">
+        <link href="{% static 'blog/assets/global/plugins/bower_components/animate.css/animate.min.css' %}" rel="stylesheet' %}">
         <link href="{% static 'blog/assets/global/plugins/bower_components/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css' %}" rel="stylesheet">
         <!--/ END PAGE LEVEL STYLES -->
 
@@ -56,17 +56,30 @@
         <![endif]-->
         <!--/ END IE SUPPORT -->
 
-        <link rel="stylesheet" href="{% static 'blog/assets/css/codemirror.css' %}">
-        <link rel="stylesheet" href="{% static 'blog/assets/css/fullscreen.css' %}">
-        <link rel="stylesheet" href="{% static 'blog/assets/css/night.css' %}">
-        <script src="{% static 'blog/assets/js/codemirror.js' %}"></script>
-        <script src="{% static 'blog/assets/js/xml.js' %}"></script>
-        <script src="{% static 'blog/assets/js/fullscreen.js' %}"></script>
+        <style type="text/css" media="screen">
+            #editor {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                height: 200px;
+            }
+        </style>
+
+        <!--<link rel="stylesheet" href="{% static 'blog/assets/css/codemirror.css' %}">-->
+        <!--<link rel="stylesheet" href="{% static 'blog/assets/css/fullscreen.css' %}">-->
+        <!--<link rel="stylesheet" href="{% static 'blog/assets/css/night.css' %}">-->
+        <!--<script src="{% static 'blog/assets/js/codemirror.js' %}"></script>-->
+        <!--<script src="{% static 'blog/assets/js/xml.js' %}"></script>-->
+        <!--<script src="{% static 'blog/assets/js/fullscreen.js' %}"></script>-->
+
     </head>
     <!--/ END HEAD -->
 
     <!-- START @BODY -->
     <body>
+
 
         <!--[if lt IE 9]>
         <p class="upgrade-browser">Upps!! You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.</p>
@@ -91,7 +104,7 @@
 
                         <!-- Start brand -->
                         <a class="navbar-brand waves-effect waves-light" href="dashboard.html">
-                            <img class="logo" src="../../../img/logo/html/logo-white.png" alt="brand logo"/>
+                            <img height="60" class="logo" src="{% static 'blog/assets/img/logo/codebloga1.png' %}" alt="brand logo"/>
                         </a><!-- /.navbar-brand -->
                         <!--/ End brand -->
 
@@ -107,18 +120,6 @@
                     <!-- Start navbar toolbar -->
                     <div class="navbar navbar-toolbar">
 
-                        <!-- Start left navigation -->
-                        <ul class="nav navbar-nav navbar-left">
-
-                            <!-- Start sidebar shrink -->
-                            <li class="navbar-minimize">
-                                <div data-activates="slide-out" class="navbar-brand button-collapse waves-effect waves-ripple"><i class="fa fa-bars"></i></div>
-                            </li>
-                            <!--/ End sidebar shrink -->
-
-                        </ul><!-- /.nav navbar-nav navbar-left -->
-                        <!--/ End left navigation -->
-
                         <!-- Start right navigation -->
                         <ul class="nav navbar-nav navbar-right"><!-- /.nav navbar-nav navbar-right -->
 
@@ -128,232 +129,10 @@
                             </li>
                             <!--/ End toggle search -->
 
-                            <!-- Start messages -->
-                            <li class="dropdown navbar-message">
-
-                                <a href="blog-single.html#" class="dropdown-toggle waves-effect waves-green" data-toggle="dropdown"><i class="fa fa-envelope-o"></i><span class="count label label-danger rounded">7</span></a>
-
-                                <!-- Start dropdown menu -->
-                                <div class="dropdown-menu animated flipInX z-depth-1">
-                                    <div class="dropdown-header">
-                                        <span class="title">Messages <strong>(7)</strong></span>
-                                        <span class="option text-right"><a href="blog-single.html#">+ New message</a></span>
-                                    </div>
-                                    <div class="dropdown-body">
-
-                                        <!-- Start message list -->
-                                        <div class="media-list niceScroll">
-
-                                            <a href="page-messages.html" class="media">
-                                                <div class="pull-left"><img src="../../../img/avatar/50/2.png" class="media-object img-circle" alt="John Kribo"/></div>
-                                                <div class="media-body">
-                                                    <span class="media-heading">John Kribo</span>
-                                                    <span class="media-text">I was impressed how fast the content is loaded. Congratulations. nice design.</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta"><i class="fa fa-reply"></i></span>
-                                                    <span class="media-meta"><i class="fa fa-paperclip"></i></span>
-                                                    <span class="media-meta pull-right">13 minutes</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="page-messages.html" class="media">
-                                                <div class="pull-left"><img src="../../../img/avatar/50/3.png" class="media-object img-circle" alt="Jennifer Poiyem"/></div>
-                                                <div class="media-body">
-                                                    <span class="media-heading">Jennifer Poiyem</span>
-                                                    <span class="media-text">It’s Simple, Clean & Nice .. Good work Dear .. GLWS</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta pull-right">17 hours</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="page-messages.html" class="media">
-                                                <div class="pull-left"><img src="../../../img/avatar/50/4.png" class="media-object img-circle" alt="Clara Wati"/></div>
-                                                <div class="media-body">
-                                                    <span class="media-heading">Clara Wati</span>
-                                                    <span class="media-text">Great work! Do you have any plans to add loading indicators for AJAX calls that might take longer than normal?</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta pull-right">1 days</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="page-messages.html" class="media">
-                                                <div class="pull-left"><img src="../../../img/avatar/50/5.png" class="media-object img-circle" alt="Toni Mriang"/></div>
-                                                <div class="media-body">
-                                                    <span class="media-heading">Toni Mriang</span>
-                                                    <span class="media-text">I am very interested in the theme and I’m thinking about buying it.</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta"><i class="fa fa-paperclip"></i></span>
-                                                    <span class="media-meta pull-right">2 days</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="page-messages.html" class="media">
-                                                <div class="pull-left"><img src="../../../img/avatar/50/6.png" class="media-object img-circle" alt="Bella negoro"/></div>
-                                                <div class="media-body">
-                                                    <span class="media-heading">Bella negoro</span>
-                                                    <span class="media-text">Great work! Good luck!</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta"><i class="fa fa-paperclip"></i></span>
-                                                    <span class="media-meta"><i class="fa fa-user"></i></span>
-                                                    <span class="media-meta pull-right">1 week</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="page-messages.html" class="media">
-                                                <div class="pull-left"><img src="../../../img/avatar/50/7.png" class="media-object img-circle" alt="Kim Mbako"/></div>
-                                                <div class="media-body">
-                                                    <span class="media-heading">Kim Mbako</span>
-                                                    <span class="media-text">Hi! First of all, thank you for the very nice theme for creating awesome web applications :)</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta"><i class="fa fa-paperclip"></i></span>
-                                                    <span class="media-meta pull-right">1 week</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="page-messages.html" class="media">
-                                                <div class="pull-left"><img src="../../../img/avatar/50/8.png" class="media-object img-circle" alt="Pack Suparman"/></div>
-                                                <div class="media-body">
-                                                    <span class="media-heading">Pack Suparman</span>
-                                                    <span class="media-text">Apik temen kie jan template, nyong gep tuku jal..</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta pull-right">1 week</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                        </div>
-                                        <!--/ End message list -->
-
-                                    </div>
-                                    <div class="dropdown-footer">
-                                        <a href="page-messages.html">See All</a>
-                                    </div>
-                                </div>
-                                <!--/ End dropdown menu -->
-
-                            </li><!-- /.dropdown navbar-message -->
-                            <!--/ End messages -->
-
-                            <!-- Start notifications -->
-                            <li class="dropdown navbar-notification">
-
-                                <a href="blog-single.html#" class="dropdown-toggle waves-effect waves-red" data-toggle="dropdown"><i class="fa fa-bell-o"></i><span class="count label label-danger rounded">6</span></a>
-
-                                <!-- Start dropdown menu -->
-                                <div class="dropdown-menu animated flipInX">
-                                    <div class="dropdown-header">
-                                        <span class="title">Notifications <strong>(10)</strong></span>
-                                        <span class="option text-right"><a href="blog-single.html#"><i class="fa fa-cog"></i> Setting</a></span>
-                                    </div>
-                                    <div class="dropdown-body niceScroll">
-
-                                        <!-- Start notification list -->
-                                        <div class="media-list">
-
-                                            <a href="blog-single.html#" class="media">
-                                                <div class="media-object pull-left"><i class="fa fa-share-alt fg-info"></i></div>
-                                                <div class="media-body">
-                                                    <span class="media-text"><strong>Dolanan Remi : </strong><strong>Chris Job,</strong><strong>Denny Puk</strong> and <strong>Joko Fernandes</strong> sent you <strong>5 free energy boosts and other request</strong></span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta">3 minutes</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="blog-single.html#" class="media">
-                                                <div class="media-object pull-left"><i class="fa fa-cogs fg-success"></i></div>
-                                                <div class="media-body">
-                                                    <span class="media-text">Your sistem is updated</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta">5 minutes</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="blog-single.html#" class="media">
-                                                <div class="media-object pull-left"><i class="fa fa-ban fg-danger"></i></div>
-                                                <div class="media-body">
-                                                    <span class="media-text">3 Member is BANNED</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta">5 minutes</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="blog-single.html#" class="media">
-                                                <div class="media-object pull-left"><img class="img-circle" src="../../../img/avatar/50/10.png" alt=""/></div>
-                                                <div class="media-body">
-                                                    <span class="media-text">daddy pushed to project Blankon version 1.0.0</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta">45 minutes</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="blog-single.html#" class="media">
-                                                <div class="media-object pull-left"><i class="fa fa-user fg-info"></i></div>
-                                                <div class="media-body">
-                                                    <span class="media-text">Change your user profile</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta">1 days</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                            <a href="blog-single.html#" class="media">
-                                                <div class="media-object pull-left"><i class="fa fa-book fg-info"></i></div>
-                                                <div class="media-body">
-                                                    <span class="media-text">Added new article</span>
-                                                    <!-- Start meta icon -->
-                                                    <span class="media-meta">1 days</span>
-                                                    <!--/ End meta icon -->
-                                                </div><!-- /.media-body -->
-                                            </a><!-- /.media -->
-
-                                        </div>
-                                        <!--/ End notification list -->
-
-                                    </div>
-                                    <div class="dropdown-footer">
-                                        <a href="blog-single.html#">See All</a>
-                                    </div>
-                                </div>
-                                <!--/ End dropdown menu -->
-
-                            </li><!-- /.dropdown navbar-notification -->
-                            <!--/ End notifications -->
-
-                            <!-- Start profile -->
-                            <li class="dropdown navbar-profile">
-                                <a href="blog-single.html#" class="dropdown-toggle waves-effect waves-yellow" data-toggle="dropdown">
-                                <span class="meta">
-                                    <span class="avatar"><img src="../../../img/avatar/35/1.png" class="img-circle" alt="admin"></span>
-                                    <span class="text hidden-xs hidden-sm text-muted">Tol Lee</span>
-                                    <span class="caret"></span>
-                                </span>
-                                </a>
-                                <!-- Start dropdown menu -->
-                                <ul class="dropdown-menu animated flipInX">
-                                    <li class="dropdown-header">Account</li>
-                                    <li><a href="page-profile.html"><i class="fa fa-user"></i>View profile</a></li>
-                                    <li><a href="mail-inbox.html"><i class="fa fa-envelope-square"></i>Inbox <span class="label label-info pull-right">30</span></a></li>
-                                    <li><a href="blog-single.html#"><i class="fa fa-share-square"></i>Invite a friend</a></li>
-                                    <li class="dropdown-header">Product</li>
-                                    <li><a href="blog-single.html#"><i class="fa fa-upload"></i>Upload</a></li>
-                                    <li><a href="blog-single.html#"><i class="fa fa-dollar"></i>Earning</a></li>
-                                    <li><a href="blog-single.html#"><i class="fa fa-download"></i>Withdrawals</a></li>
-                                    <li class="divider"></li>
-                                    <li><a href="page-signin.html"><i class="fa fa-sign-out"></i>Logout</a></li>
-                                </ul>
-                                <!--/ End dropdown menu -->
-                            </li><!-- /.dropdown navbar-profile -->
-                            <!--/ End profile -->
+                            <li>
+                                {% include 'blog/loginpartial.html' %}
+                                {% include 'blog/registerpartial.html' %}
+                            </li>
 
                         </ul>
                         <!--/ End right navigation -->
@@ -366,254 +145,6 @@
             </header> <!-- /#header -->
             <!--/ END HEADER -->
 
-            <!-- START @SIDEBAR LEFT -->
-            <aside id="sidebar-left">
-
-                <!-- Sidebar navigation -->
-                <div id="slide-out" class="side-nav admin-side-nav stylish-side-nav">
-                    <!-- Logo -->
-                    <div class="logo-wrapper">
-                        <img src="../../../img/avatar/50/1.png" class="img-responsive img-circle">
-                        <div class="rgba-stylish-strong"><p class="user white-text">Hello, Lee<br>
-                            Web Designer</p></div>
-                    </div>
-                    <!--/. Logo -->
-
-                    <!-- Side navigation links -->
-                    <ul class="collapsible collapsible-accordion">
-                        <li><a href="dashboard.html" class="waves-effect waves-light"><i class="fa fa-home"></i> Dashboard</a></li>
-                        <li class="active">
-                            <a class="collapsible-header waves-effect waves-light active"><i class="fa fa-globe"></i> Blog <i class="material-icons pull-right">expand_more</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="blog-grid.html" class="waves-effect waves-light">Grid</a></li>
-                                    <li><a href="blog-list.html" class="waves-effect waves-light">List</a></li>
-                                    <li class="active"><a href="blog-single.html" class="waves-effect waves-light">Single</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect waves-light"><i class="fa fa-envelope"></i> Mail <i class="material-icons pull-right">expand_more</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="mail-inbox.html" class="waves-effect waves-light">Inbox</a></li>
-                                    <li><a href="mail-compose.html" class="waves-effect waves-light">Compose Mail</a></li>
-                                    <li><a href="mail-view.html" class="waves-effect waves-light">View Mail</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect waves-light"><i class="fa fa-file-o"></i> Pages <i class="material-icons pull-right">expand_more</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="page-gallery.html" class="waves-effect waves-light">Gallery</a></li>
-                                    <li><a href="page-faq.html" class="waves-effect waves-light">FAQ</a></li>
-                                    <li><a href="page-invoice.html" class="waves-effect waves-light">Invoice</a></li>
-                                    <li><a href="page-messages.html" class="waves-effect waves-light">Messages</a></li>
-                                    <li><a href="page-timeline.html" class="waves-effect waves-light">Timeline</a></li>
-                                    <li><a href="page-profile.html" class="waves-effect waves-light">Profile</a></li>
-                                    <li>
-                                        <ul class="collapsible collapsible-accordion">
-                                            <li>
-                                                <a class="collapsible-header waves-effect waves-light">Search <i class="material-icons pull-right">expand_more</i></a>
-                                                <div class="collapsible-body">
-                                                    <ul>
-                                                        <li><a href="page-search-course.html" class="waves-effect waves-light">Courses</a></li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul class="collapsible collapsible-accordion">
-                                            <li>
-                                                <a class="collapsible-header waves-effect waves-light">Error <i class="material-icons pull-right">expand_more</i></a>
-                                                <div class="collapsible-body">
-                                                    <ul>
-                                                        <li><a href="page-error-403.html" class="waves-effect waves-light">Error 403</a></li>
-                                                        <li><a href="page-error-403-type-2.html" class="waves-effect waves-light">Error 403 type 2</a></li>
-                                                        <li><a href="page-error-404.html" class="waves-effect waves-light">Error 404</a></li>
-                                                        <li><a href="page-error-404-type-2.html" class="waves-effect waves-light">Error 404 type 2</a></li>
-                                                        <li><a href="page-error-500.html" class="waves-effect waves-light">Error 500</a></li>
-                                                        <li><a href="page-error-500-type-2.html" class="waves-effect waves-light">Error 500 type 2</a></li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <ul class="collapsible collapsible-accordion">
-                                            <li>
-                                                <a class="collapsible-header waves-effect waves-light">Account <i class="material-icons pull-right">expand_more</i></a>
-                                                <div class="collapsible-body">
-                                                    <ul>
-                                                        <li><a href="page-signin.html" class="waves-effect waves-light">Sign In</a></li>
-                                                        <li><a href="page-signin-type-2.html" class="waves-effect waves-light">Sign In Type 2</a></li>
-                                                        <li><a href="page-signup.html" class="waves-effect waves-light">Sign Up</a></li>
-                                                        <li><a href="page-lost-password.html" class="waves-effect waves-light">Lost Password</a></li>
-                                                        <li><a href="page-lock-screen.html" class="waves-effect waves-light">Lock Screen</a></li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect waves-light"><i class="fa fa-list-alt"></i> Forms <i class="material-icons pull-right">expand_more</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="form-element.html" class="waves-effect waves-light">Element</a></li>
-                                    <li><a href="form-advanced.html" class="waves-effect waves-light">Advanced</a></li>
-                                    <li><a href="form-layout.html" class="waves-effect waves-light">Layout</a></li>
-                                    <li><a href="form-validation.html" class="waves-effect waves-light">Validation</a></li>
-                                    <li><a href="form-wizard.html" class="waves-effect waves-light">Wizard</a></li>
-                                    <li><a href="form-wysiwyg.html" class="waves-effect waves-light">Text Editor</a></li>
-                                    <li><a href="form-xeditable.html" class="waves-effect waves-light">X-Editable</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect waves-light"><i class="fa fa-table"></i> Tables <i class="material-icons pull-right">expand_more</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="table-default.html" class="waves-effect waves-light">Default</a></li>
-                                    <li><a href="table-color.html" class="waves-effect waves-light">Color</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect waves-light"><i class="fa fa-map-marker"></i> Maps <i class="material-icons pull-right">expand_more</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="maps-google.html" class="waves-effect waves-light">Google</a></li>
-                                    <li><a href="maps-vector.html" class="waves-effect waves-light">Vector</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect waves-light"><i class="fa fa-signal"></i> Charts <i class="material-icons pull-right">expand_more</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="chart-flot.html" class="waves-effect waves-light">Flot</a></li>
-                                    <li><a href="chart-morris.html" class="waves-effect waves-light">Morris</a></li>
-                                    <li><a href="chart-chartjs.html" class="waves-effect waves-light">Chartjs</a></li>
-                                    <li><a href="chart-c3js.html" class="waves-effect waves-light">C3js</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect waves-light"><i class="fa fa-cube"></i> Components <i class="material-icons pull-right">expand_more</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li><a href="component-cards.html" class="waves-effect waves-light">Cards</a></li>
-                                    <li><a href="component-shadows.html" class="waves-effect waves-light">Shadows</a></li>
-                                    <li><a href="component-grid-system.html" class="waves-effect waves-light">Grid System</a></li>
-                                    <li><a href="component-buttons.html" class="waves-effect waves-light">Buttons</a></li>
-                                    <li><a href="component-typography.html" class="waves-effect waves-light">Typography</a></li>
-                                    <li><a href="component-panel.html" class="waves-effect waves-light">Panels</a></li>
-                                    <li><a href="component-alerts.html" class="waves-effect waves-light">Alerts</a></li>
-                                    <li><a href="component-modals.html" class="waves-effect waves-light">Modals</a></li>
-                                    <li><a href="component-video.html" class="waves-effect waves-light">Video</a></li>
-                                    <li><a href="component-tabsaccordion.html" class="waves-effect waves-light">Tabs & Accordion</a></li>
-                                    <li><a href="component-sliders.html" class="waves-effect waves-light">Sliders</a></li>
-                                    <li>
-                                        <ul class="collapsible collapsible-accordion">
-                                            <li>
-                                                <a class="collapsible-header waves-effect waves-light">Icons <i class="material-icons pull-right">expand_more</i></a>
-                                                <div class="collapsible-body">
-                                                    <ul>
-                                                        <li><a href="component-glyphicons.html" class="waves-effect waves-light">Glyphicons</a></li>
-                                                        <li><a href="component-glyphicons-pro.html" class="waves-effect waves-light">Glyphicons PRO</a></li>
-                                                        <li><a href="component-font-awesome.html" class="waves-effect waves-light">Font Awesome</a></li>
-                                                        <li><a href="component-weather-icons.html" class="waves-effect waves-light">Weather Icons</a></li>
-                                                        <li><a href="component-map-icons.html" class="waves-effect waves-light">Map Icons</a></li>
-                                                        <li><a href="component-simple-line-icons.html" class="waves-effect waves-light">Simple Line Icons</a></li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="component-other.html" class="waves-effect waves-light">Other</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li>
-                            <a class="collapsible-header waves-effect waves-light"><i class="fa fa-align-left"></i> Sub Menu <i class="material-icons pull-right">expand_more</i></a>
-                            <div class="collapsible-body">
-                                <ul>
-                                    <li>
-                                        <ul class="collapsible collapsible-accordion">
-                                            <li>
-                                                <a class="collapsible-header waves-effect waves-light">Level 1 <i class="material-icons pull-right">expand_more</i></a>
-                                                <div class="collapsible-body">
-                                                    <ul>
-                                                        <li>
-                                                            <ul class="collapsible collapsible-accordion">
-                                                                <li>
-                                                                    <a class="collapsible-header waves-effect waves-light">Level 2 <i class="material-icons pull-right">expand_more</i></a>
-                                                                    <div class="collapsible-body">
-                                                                        <ul>
-                                                                            <li>
-                                                                                <ul class="collapsible collapsible-accordion">
-                                                                                    <li>
-                                                                                        <a class="collapsible-header waves-effect waves-light">Level 3 <i class="material-icons pull-right">expand_more</i></a>
-                                                                                        <div class="collapsible-body">
-                                                                                            <ul>
-                                                                                                <li>
-                                                                                                    <ul class="collapsible collapsible-accordion">
-                                                                                                        <li>
-                                                                                                            <a class="collapsible-header waves-effect waves-light">Level 4 <i class="material-icons pull-right">expand_more</i></a>
-                                                                                                            <div class="collapsible-body">
-                                                                                                                <ul>
-                                                                                                                    <li><a href="blog-single.html#" class="waves-effect waves-light">Level 5</a></li>
-                                                                                                                    <li><a href="blog-single.html#" class="waves-effect waves-light">Level 5</a></li>
-                                                                                                                    <li><a href="blog-single.html#" class="waves-effect waves-light">Level 5</a></li>
-                                                                                                                </ul>
-                                                                                                            </div>
-                                                                                                        </li>
-                                                                                                    </ul>
-                                                                                                </li>
-                                                                                                <li><a href="blog-single.html#" class="waves-effect waves-light">Level 4</a></li>
-                                                                                                <li><a href="blog-single.html#" class="waves-effect waves-light">Level 4</a></li>
-                                                                                            </ul>
-                                                                                        </div>
-                                                                                    </li>
-                                                                                </ul>
-                                                                            </li>
-                                                                            <li><a href="blog-single.html#" class="waves-effect waves-light">Level 3</a></li>
-                                                                            <li><a href="blog-single.html#" class="waves-effect waves-light">Level 3</a></li>
-                                                                        </ul>
-                                                                    </div>
-                                                                </li>
-                                                            </ul>
-                                                        </li>
-                                                        <li><a href="blog-single.html#" class="waves-effect waves-light">Level 2</a></li>
-                                                        <li><a href="blog-single.html#" class="waves-effect waves-light">Level 2</a></li>
-                                                    </ul>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="blog-single.html#" class="waves-effect waves-light">Level 1</a></li>
-                                    <li><a href="blog-single.html#" class="waves-effect waves-light">Level 1</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li><a href="animate.html" class="waves-effect waves-light"><i class="fa fa-forumbee"></i> Animate.css</a></li>
-                        <li><a href="widget-overview.html" class="waves-effect waves-light"><i class="fa fa-desktop"></i> Overview</a></li>
-                        <li><a href="widget-social.html" class="waves-effect waves-light"><i class="fa fa-group"></i> Social</a></li>
-                        <li><a href="widget-blog.html" class="waves-effect waves-light"><i class="fa fa-pencil"></i> Blog</a></li>
-                        <li><a href="widget-weather.html" class="waves-effect waves-light"><i class="fa fa-sun-o"></i> Weather</a></li>
-                        <li><a href="widget-misc.html" class="waves-effect waves-light"><i class="fa fa-puzzle-piece"></i> Misc</a></li>
-                    </ul>
-                    <!--/. Side navigation links -->
-
-                </div>
-                <!--/. Sidebar navigation -->
-
-            </aside><!-- /#sidebar-left -->
             <!--/ END SIDEBAR LEFT -->
 
             <!-- START @PAGE CONTENT -->
@@ -621,20 +152,20 @@
 
                 <!-- Start page header -->
                 <div class="header-content">
-                    <h2><i class="fa fa-file-text"></i> Blog Single <span>blog single sample</span></h2>
+                    <h2><i class="fa fa-file-text"></i> {% block page-title %}{% endblock %} </h2>
                     <div class="breadcrumb-wrapper hidden-xs">
                         <span class="label">You are here:</span>
                         <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-home"></i>
-                                <a href="dashboard.html">Dashboard</a>
+                                <a href="dashboard.html">{% block page-name %}{% endblock%}</a>
                                 <i class="fa fa-angle-right"></i>
                             </li>
                             <li>
-                                <a href="blog-single.html#">Pages</a>
+                                <a href="blog-single.html#"></a>
                                 <i class="fa fa-angle-right"></i>
                             </li>
-                            <li class="active">Blog Single</li>
+                            <li class="active"></li>
                         </ol>
                     </div><!-- /.breadcrumb-wrapper -->
                 </div><!-- /.header-content -->
@@ -647,8 +178,8 @@
 
                 <!-- Start footer content -->
                 <footer class="footer-content">
-                    2014 - <span id="copyright-year"></span> &copy; Blankon Admin. Created by <a href="../../../../djavaui_default.html" target="_blank">Djava UI</a>, Yogyakarta ID
-                    <span class="pull-right">0.01 GB(0%) of 15 GB used</span>
+                    <span id="copyright-year"></span> &copy; CODEBLOGA. Created by <a href="https://tridim.herokuapp.com" target="_blank">TDS</a>
+                    <span class="pull-right"></span>
                 </footer><!-- /.footer-content -->
                 <!--/ End footer content -->
 
@@ -752,6 +283,13 @@
       }
     });
   </script>
+
+    <script src="{% static 'blog/assets/ace/src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor");
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/javascript");
+    </script>
 
 
     </body>

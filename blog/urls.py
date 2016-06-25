@@ -11,4 +11,5 @@ urlpatterns = [
     # /app/country/delete/<country_id>/
     url(r'post/delete/(?P<pk>[0-9]+)/$', views.PostDelete.as_view(), name='post-delete'),
 
+
 ]
