@@ -1,298 +1,71 @@
-<!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
+<!doctype html>
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
 
-    <!-- START @HEAD -->
-    <head>
-        <!-- START @META SECTION -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-        <meta name="description" content="Codebloga is a blog post web application developed with Django framework for code blog posts">
-        <meta name="keywords" content="TDS, codebloga, blog, code blog, blog, code, django, django blog, admin">
-        <meta name="author" content="TDS">
-        <title>{% block title %}{% endblock %}</title>
-        <!--/ END META SECTION -->
-        {% load staticfiles %}
-        <!-- START @FAVICONS -->
-        <link href="{% static 'blog/assets/img/ico/html/apple-touch-icon-144x144-precomposed.png' %}" rel="apple-touch-icon-precomposed" sizes="144x144">
-        <link href="{% static 'blog/assets/img/ico/html/apple-touch-icon-114x114-precomposed.png' %}" rel="apple-touch-icon-precomposed" sizes="114x114">
-        <link href="{% static 'blog/assets/img/ico/html/apple-touch-icon-72x72-precomposed.png' %}" rel="apple-touch-icon-precomposed" sizes="72x72">
-        <link href="{% static 'blog/assets/img/ico/html/apple-touch-icon-57x57-precomposed.png' %}" rel="apple-touch-icon-precomposed">
-        <link href="{% static 'blog/assets/img/ico/html/apple-touch-icon.png" rel="shortcut icon">
-        <!--/ END FAVICONS -->
+<html lang="en">
 
-        <!-- START @FONT STYLES -->
-        <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,500,700" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <!--/ END FONT STYLES -->
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="generator" content="Django Polymer">
+  <title>Home Page</title>
 
-        <!-- START @GLOBAL MANDATORY STYLES -->
-        <link href="{% static 'blog/assets/global/plugins/bower_components/bootstrap/dist/css/bootstrap.min.css' %}" rel="stylesheet">
-        <link href="{% static 'blog/assets/commercial/plugins/mdb/css/mdb.min.css' %}" rel="stylesheet">
-        <!--/ END GLOBAL MANDATORY STYLES -->
+  <!-- Place favicon.ico in the `app/` directory -->
 
-        <!-- START @PAGE LEVEL STYLES -->
-        <link href="{% static 'blog/assets/global/plugins/bower_components/fontawesome/css/font-awesome.min.css' %}" rel="stylesheet">
-        <link href="{% static 'blog/assets/global/plugins/bower_components/animate.css/animate.min.css' %}" rel="stylesheet' %}">
-        <link href="{% static 'blog/assets/global/plugins/bower_components/bootstrap-wysihtml5/src/bootstrap-wysihtml5.css' %}" rel="stylesheet">
-        <!--/ END PAGE LEVEL STYLES -->
+  <!-- Chrome for Android theme color -->
+  <meta name="theme-color" content="#2E3AA1">
 
-        <!-- START @THEME STYLES -->
-        <link href="{% static 'blog/assets/admin/css/layout.css' %}" rel="stylesheet">
-        <link href="{% static 'blog/assets/admin/css/components.css' %}" rel="stylesheet">
-        <link href="{% static 'blog/assets/admin/css/plugins.css' %}" rel="stylesheet">
-        <link href="{% static 'blog/assets/admin/css/themes/material-design.theme.css' %}" rel="stylesheet" id="theme">
-        <link href="{% static 'blog/assets/admin/css/material-custom.css' %}" rel="stylesheet">
-        <link href="{% static 'blog/assets/admin/css/pages/blog.css' %}" rel="stylesheet">
-        <link href="{% static 'blog/assets/admin/css/custom.css' %}" rel="stylesheet">
-        <!--/ END THEME STYLES -->
+  <!-- Web Application Manifest -->
+  <link rel="manifest" href="manifest.json">
 
-        <!-- START @IE SUPPORT -->
-        <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/html5shiv/dist/html5shiv.min.js' %}"></script>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/respond-minmax/dest/respond.min.js' %}"></script>
-        <![endif]-->
-        <!--/ END IE SUPPORT -->
+  <!-- Tile color for Win8 -->
+  <meta name="msapplication-TileColor" content="#3372DF">
 
-        <style type="text/css" media="screen">
-            #editor {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                height: 200px;
-            }
-        </style>
+    {% load static %}
 
-        <!--<link rel="stylesheet" href="{% static 'blog/assets/css/codemirror.css' %}">-->
-        <!--<link rel="stylesheet" href="{% static 'blog/assets/css/fullscreen.css' %}">-->
-        <!--<link rel="stylesheet" href="{% static 'blog/assets/css/night.css' %}">-->
-        <!--<script src="{% static 'blog/assets/js/codemirror.js' %}"></script>-->
-        <!--<script src="{% static 'blog/assets/js/xml.js' %}"></script>-->
-        <!--<script src="{% static 'blog/assets/js/fullscreen.js' %}"></script>-->
+  <!-- Add to homescreen for Chrome on Android -->
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="application-name" content="PSK">
+  <link rel="icon" sizes="192x192" href="{% static 'app/images/touch/chrome-touch-icon-192x192.png' %}">
 
-    </head>
-    <!--/ END HEAD -->
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Polymer Starter Kit">
+  <link rel="apple-touch-icon" href="{% static 'app/images/touch/apple-touch-icon.png' %}">
 
-    <!-- START @BODY -->
-    <body>
+  <!-- Tile icon for Win8 (144x144) -->
+  <meta name="msapplication-TileImage" content="{% static 'app/images/touch/ms-touch-icon-144x144-precomposed.png' %}">
 
+    <!-- Because this project uses vulcanize this should be your only html import
+       in this file. All other imports should go in elements.html -->
+  <link rel="import" href="{% static 'blog/elements/elements.html' %}">
+  <!-- endbuild-->
 
-        <!--[if lt IE 9]>
-        <p class="upgrade-browser">Upps!! You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/" target="_blank">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-
-        <!-- START @WRAPPER -->
-        <section id="wrapper">
-
-            <!-- START @HEADER -->
-            <header id="header">
-
-                <!-- Start header left -->
-                <div class="header-left">
-                    <!-- Start offcanvas left: This menu will take position at the top of template header (mobile only). Make sure that only #header have the `position: relative`, or it may cause unwanted behavior -->
-                    <div class="navbar-minimize-mobile left">
-                        <div data-activates="slide-out" class="navbar-brand button-collapse waves-effect waves-light"><i class="fa fa-bars"></i></div>
-                    </div>
-                    <!--/ End offcanvas left -->
-
-                    <!-- Start navbar header -->
-                    <div class="navbar-header">
-
-                        <!-- Start brand -->
-                        <a class="navbar-brand waves-effect waves-light" href="dashboard.html">
-                            <img height="60" class="logo" src="{% static 'blog/assets/img/logo/codebloga1.png' %}" alt="brand logo"/>
-                        </a><!-- /.navbar-brand -->
-                        <!--/ End brand -->
-
-                    </div><!-- /.navbar-header -->
-                    <!--/ End navbar header -->
-
-                    <div class="clearfix"></div>
-                </div><!-- /.header-left -->
-                <!--/ End header left -->
-
-                <!-- Start header right -->
-                <div class="header-right">
-                    <!-- Start navbar toolbar -->
-                    <div class="navbar navbar-toolbar">
-
-                        <!-- Start right navigation -->
-                        <ul class="nav navbar-nav navbar-right"><!-- /.nav navbar-nav navbar-right -->
-
-                            <!-- Start toggle search -->
-                            <li>
-                                <a href="blog-single.html#modal-search" class="modal-trigger waves-effect waves-ripple"><i class="fa fa-search"></i></a>
-                            </li>
-                            <!--/ End toggle search -->
-
-                            <li>
-                                {% include 'blog/loginpartial.html' %}
-                                {% include 'blog/registerpartial.html' %}
-                            </li>
-
-                        </ul>
-                        <!--/ End right navigation -->
-
-                    </div><!-- /.navbar-toolbar -->
-                    <!--/ End navbar toolbar -->
-                </div><!-- /.header-right -->
-                <!--/ End header left -->
-
-            </header> <!-- /#header -->
-            <!--/ END HEADER -->
-
-            <!--/ END SIDEBAR LEFT -->
-
-            <!-- START @PAGE CONTENT -->
-            <section id="page-content">
-
-                <!-- Start page header -->
-                <div class="header-content">
-                    <h2><i class="fa fa-file-text"></i> {% block page-title %}{% endblock %} </h2>
-                    <div class="breadcrumb-wrapper hidden-xs">
-                        <span class="label">You are here:</span>
-                        <ol class="breadcrumb">
-                            <li>
-                                <i class="fa fa-home"></i>
-                                <a href="dashboard.html">{% block page-name %}{% endblock%}</a>
-                                <i class="fa fa-angle-right"></i>
-                            </li>
-                            <li>
-                                <a href="blog-single.html#"></a>
-                                <i class="fa fa-angle-right"></i>
-                            </li>
-                            <li class="active"></li>
-                        </ol>
-                    </div><!-- /.breadcrumb-wrapper -->
-                </div><!-- /.header-content -->
-                <!--/ End page header -->
-                <div class="body-content animated fadeIn">
-                    <div class="container">
-                        {% block content %}{% endblock %}
-                    </div>
-                </div>
-
-                <!-- Start footer content -->
-                <footer class="footer-content">
-                    <span id="copyright-year"></span> &copy; CODEBLOGA. Created by <a href="https://tridim.herokuapp.com" target="_blank">TDS</a>
-                    <span class="pull-right"></span>
-                </footer><!-- /.footer-content -->
-                <!--/ End footer content -->
-
-            </section><!-- /#page-content -->
-            <!--/ END PAGE CONTENT -->
-
-        </section><!-- /#wrapper -->
-        <!--/ END WRAPPER -->
-
-        <!-- START @ADDITIONAL ELEMENT -->
-        <div class="fixed-action-btn" style="bottom: 45px; right: 24px;">
-            <a class="btn-floating btn-large red">
-                <i class="large material-icons">add</i>
-            </a>
-
-            <ul>
-                <li><a class="btn-floating red" data-container="body" data-toggle="popover" data-placement="left" data-trigger="hover" data-content="All overview website"><i class="material-icons">insert_chart</i></a></li>
-                <li><a class="btn-floating yellow darken-1" data-container="body" data-toggle="popover" data-placement="left" data-trigger="hover" data-content="All new members"><i class="material-icons">account_circle</i></a></li>
-                <li><a class="btn-floating green" data-container="body" data-toggle="popover" data-placement="left" data-trigger="hover" data-content="All new post"><i class="material-icons">create</i></a></li>
-                <li><a class="btn-floating blue" data-container="body" data-toggle="popover" data-placement="left" data-trigger="hover" data-content="Gallery images"><i class="material-icons">photo_camera</i></a></li>
-            </ul>
-        </div>
-
-        <div id="modal-search" class="modal bottom-sheet">
-
-            <div class="modal-content">
-                <h4 class="text-center">Type for searching...</h4>
-                <div class="container-fluid">
-                    <form class="col-md-12">
-                        <div class="row">
-                            <div class="input-field col-md-12">
-                                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                                <label for="textarea1">Type on here</label>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-success waves-effect">Search</button>
-            </div>
-        </div>
-        <!--/ END ADDITIONAL ELEMENT -->
-
-        <!-- START @BACK TOP -->
-        <div id="back-top" class="animated pulse circle">
-            <i class="fa fa-angle-up"></i>
-        </div> <!-- /#back-top -->
-        <!--/ END BACK TOP -->
-
-        <!-- START JAVASCRIPT SECTION (Load javascripts at bottom to reduce load time) -->
-        <!-- START @CORE PLUGINS -->
-        <script src="{% static 'blog/assets/global/plugins/bower_components/jquery/dist/jquery.min.js' %}"></script>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/jquery-cookie/jquery.cookie.js' %}"></script>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/bootstrap/dist/js/bootstrap.min.js' %}"></script>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/jquery-nicescroll/jquery.nicescroll.min.js' %}"></script>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/jquery.sparkline.min/index.js' %}"></script>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/jquery-easing-original/jquery.easing.1.3.min.js' %}"></script>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/ionsound/js/ion.sound.min.js' %}"></script>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/bootbox/bootbox.js' %}"></script>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/retina.js/dist/retina.min.js' %}"></script>
-        <script src="{% static 'blog/assets/commercial/plugins/mdb/js/mdb.min.js' %}"></script>
-        <!--/ END CORE PLUGINS -->
-
-        <!-- START @PAGE LEVEL PLUGINS -->
-        <script src="{% static 'blog/assets/global/plugins/bower_components/bootstrap-wysihtml5/lib/js/wysihtml5-0.3.0.min.js' %}"></script>
-        <script src="{% static 'blog/assets/global/plugins/bower_components/bootstrap-wysihtml5/src/bootstrap-wysihtml5.js' %}"></script>
-        <!--/ END PAGE LEVEL PLUGINS -->
-
-        <!-- START @PAGE LEVEL SCRIPTS -->
-        <script src="{% static 'blog/assets/admin/js/apps-material-design.js' %}"></script>
-        <script src="{% static 'blog/assets/admin/js/pages/blankon.blog.js' %}"></script>
-        <script src="{% static 'blog/assets/admin/js/demo.js' %}"></script>
-        <!--/ END PAGE LEVEL SCRIPTS -->
-        <!--/ END JAVASCRIPT SECTION -->
-
-        <!-- START GOOGLE ANALYTICS -->
-        <script>
-            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-            ga('create', 'UA-55892530-1', 'auto');
-            ga('send', 'pageview');
-
-        </script>
-        <!--/ END GOOGLE ANALYTICS -->
-
-    <script>
-    var editor = CodeMirror.fromTextArea(document.getElementById("code"), {
-      lineNumbers: true,
-      theme: "night",
-      extraKeys: {
-        "F11": function(cm) {
-          cm.setOption("fullScreen", !cm.getOption("fullScreen"));
-        },
-        "Esc": function(cm) {
-          if (cm.getOption("fullScreen")) cm.setOption("fullScreen", false);
-        }
+  <!-- build:js bower_components/webcomponentsjs/webcomponents-lite.min.js -->
+  <script src="{% static 'blog/bower_components/webcomponentsjs/webcomponents-lite.js' %}"></script>
+  <!-- endbuild -->
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        line-height: 1.5;
+        min-height: 100vh;
+        background-color: #eeeeee;
       }
-    });
-  </script>
+    </style>
+</head>
 
-    <script src="{% static 'blog/assets/ace/src-noconflict/ace.js' %}" type="text/javascript" charset="utf-8"></script>
-    <script>
-        var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode("ace/mode/javascript");
-    </script>
-
-
-    </body>
-    <!--/ END BODY -->
+<body>
+    {% block content %}{% endblock %}
+</body>
 
 </html>

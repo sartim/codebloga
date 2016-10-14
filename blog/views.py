@@ -13,7 +13,7 @@ from .models import Post
 
 
 class HomeView(generic.ListView):
-    template_name = 'blog/home.html'
+    template_name = 'blog/my-home.html'
     context_object_name = 'all_posts'
     paginate_by = 5
 

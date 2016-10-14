@@ -1,0 +1,105 @@
+{% extends 'blog/base.html' %}
+{% block page-title %}Blog{% endblock %}
+{% block page-name %}Home{% endblock%}
+{% block content %}
+
+<style include="shared-styles">
+      :host {
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
+
+        display: block;
+      }
+
+      app-header {
+        color: #fff;
+        /* background-color: var(--app-primary-color); */
+        background-color: aqua;
+      }
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+
+      .drawer-list {
+        margin: 0 20px;
+      }
+
+      .drawer-list a {
+        display: block;
+
+        padding: 0 16px;
+
+        text-decoration: none;
+
+        color: var(--app-secondary-color);
+
+        line-height: 40px;
+      }
+
+      .drawer-list a.iron-selected {
+        color: black;
+
+        font-weight: bold;
+      }
+      h1 {
+        color: #000;
+      }
+    </style>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+      <!-- Drawer content -->
+      <app-drawer>
+        <app-toolbar>Menu</app-toolbar>
+
+      </app-drawer>
+
+      <!-- Main content -->
+      <app-header-layout has-scrolling-region>
+
+        <app-header condenses reveals effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
+            <div main-title>My App</div>
+          </app-toolbar>
+        </app-header>
+        <h1>Content</h1>
+        {% for post in all_posts %}
+        <div class="row">
+            <div class="col-md-4">
+                {% if post.image %}
+                <img src="{{ post.image.url }}" style="width:100px; height:100px" class="img-responsive">
+                {% endif %}
+            </div>
+            <div class="col-md-8">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h5><a href="{% url 'blog:post-detail' post.id %}">View</a></h5>
+                    </div>
+                    <div class="panel-body">
+                        {{ post.user }}
+                        {{ post.title }}
+                    </div>
+                </div>
+            </div>
+        </div><hr />
+        {% endfor %}
+
+        <!--<iron-pages
+            selected="[[page]]"
+            attr-for-selected="name"
+            fallback-selection="view404"
+            role="main">
+          <my-view1 name="view1"></my-view1>
+          <my-view2 name="view2"></my-view2>
+          <my-view3 name="view3"></my-view3>
+          <my-view404 name="view404"></my-view404>
+        </iron-pages>-->
+      </app-header-layout>
+
+{% endblock %}

@@ -17,19 +17,19 @@ Including another URLconf
 from datetime import datetime
 from django.conf.urls import url, include
 from blog.forms import BootstrapAuthenticationForm
+from django.contrib.auth.views import login, logout
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from blog.views import HomeView
+from blog.views import HomeView, register, register_success
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeView.as_view(), name='home'),
     url(r'^blog/', include('blog.urls', namespace="blog")),
-    url(r'^register', 'blog.views.register', name='register'),
-    url(r'^register_success$', 'blog.views.register_success', name='register_success'),
-    url(r'^login/$',
-        'django.contrib.auth.views.login',
+    url(r'^register', register, name='register'),
+    url(r'^register_success$', register_success, name='register_success'),
+    url(r'^login/$', login,
         {
             'template_name': 'blog/login.html',
             'authentication_form': BootstrapAuthenticationForm,
@@ -40,8 +40,7 @@ urlpatterns = [
                 }
         },
         name='login'),
-    url(r'^logout$',
-        'django.contrib.auth.views.logout',
+    url(r'^logout$', logout,
         {
             'next_page': '/',
         },
