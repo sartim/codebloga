@@ -117,27 +117,38 @@
 
                 <paper-card>
             <div class="card-content">
-                <juicy-ace-editor theme="ace/theme/monokai" mode="ace/mode/html" style="height: 270px">// ENTER your code here</juicy-ace-editor>
+
+                <div class="container">
+    {% for post in all_posts %}
+<div class="row">
+    <div class="col-md-4">
+        {% if post.image %}
+        <img src="{{ post.image.url }}" style="width:100px; height:100px" class="img-responsive">
+        {% endif %}
+    </div>
+    <div class="col-md-8">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h5><a href="{% url 'blog:post-detail' post.id %}">View</a></h5>
+            </div>
+            <div class="panel-body">
+                {{ post.user }}
+                {{ post.title }}
+                <juicy-ace-editor theme="ace/theme/monokai" mode="ace/mode/html" style="height: 270px">{{ post.code }}</juicy-ace-editor>
+            </div>
+        </div>
+    </div>
+</div><hr />
+{% endfor %}
+</div>
+
 
             </div>
-            <div class="card-actions">
+           <!-- <div class="card-actions">
               <paper-button>Share</paper-button>
               <paper-button>Explore!</paper-button>
-            </div>
+            </div>-->
           </paper-card>
-
-
-
-        <!--<iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="view404"
-            role="main">
-          <my-view1 name="view1"></my-view1>
-          <my-view2 name="view2"></my-view2>
-          <my-view3 name="view3"></my-view3>
-          <my-view404 name="view404"></my-view404>
-        </iron-pages>-->
 
     </app-drawer-layout>
 

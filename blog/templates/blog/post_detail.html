@@ -36,9 +36,7 @@
       {{ post.content }}
       </div>
       <div class="col-md-9">
-        <div id="editor">
-            {{ post.code }}
-        </div>
+        <juicy-ace-editor theme="ace/theme/monokai" mode="ace/mode/html" style="height: 270px">{{ post.code }}</juicy-ace-editor>
       </div>
     </div>
 </div>

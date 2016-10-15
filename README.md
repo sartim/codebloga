@@ -1,6 +1,6 @@
 Codebloga!
 
-This is a web application developed using Django 1.8 and Polymer 1.6 for posting code snippets.
+This is a web application developed using Django 1.8 and Polymer 1.6 for posting code snippets. It runs on SQLite database the credentials for login is `author` and `Default` as password
 
 To begin, fire up a local server from inside the `codebloga` directory.
 
