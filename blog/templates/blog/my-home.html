@@ -3,7 +3,7 @@
 {% block page-name %}Home{% endblock%}
 {% block content %}
 
-<style include="shared-styles">
+<style>
       :host {
         --app-primary-color: #4285f4;
         --app-secondary-color: black;
@@ -13,8 +13,7 @@
 
       app-header {
         color: #fff;
-        /* background-color: var(--app-primary-color); */
-        background-color: aqua;
+        background-color: var(--app-primary-color);
       }
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
@@ -41,54 +40,93 @@
 
         font-weight: bold;
       }
-      h1 {
-        color: #000;
-      }
+
     </style>
 
-    <app-location route="{{route}}"></app-location>
-    <app-route
-        route="{{route}}"
-        pattern="/:page"
-        data="{{routeData}}"
-        tail="{{subroute}}"></app-route>
+<style>
 
-      <!-- Drawer content -->
-      <app-drawer>
-        <app-toolbar>Menu</app-toolbar>
+    paper-card {
+      width: 100%;
+    }
 
-      </app-drawer>
+    .horizontal {
+      @apply(--layout-horizontal);
+    }
 
+    .justified {
+      @apply(--layout-justified);
+    }
+
+    .amber {
+      background: var(--paper-amber-900);
+    }
+
+    .lime {
+      background: var(--paper-lime-500);
+    }
+
+    .cyan {
+      background: var(--paper-cyan-500);
+    }
+
+    .dark {
+      background: var(--paper-blue-grey-500);
+    }
+    paper-card.dark, paper-card.amber, paper-card.lime, paper-card.cyan {
+      color: white;
+      --paper-card-header-color: white;
+    }
+  </style>
+
+<style>
+    .container {
+        padding: 10px;
+        text-align: center;
+    }
+</style>
+
+<style>
+    app-toolbar {
+      background-color: #4285f4;
+      color: #fff;
+    }
+
+    paper-icon-button {
+      --paper-icon-button-ink-color: white;
+    }
+
+    paper-icon-button + [main-title] {
+      margin-left: 24px;
+    }
+</style>
+
+<style>
+
+
+</style>
+
+     <app-drawer-layout fullbleed>
       <!-- Main content -->
-      <app-header-layout has-scrolling-region>
 
-        <app-header condenses reveals effects="waterfall">
+
           <app-toolbar>
             <paper-icon-button icon="menu" drawer-toggle></paper-icon-button>
-            <div main-title>My App</div>
+            <div main-title>CODEBLOGA</div>
           </app-toolbar>
-        </app-header>
-        <h1>Content</h1>
-        {% for post in all_posts %}
-        <div class="row">
-            <div class="col-md-4">
-                {% if post.image %}
-                <img src="{{ post.image.url }}" style="width:100px; height:100px" class="img-responsive">
-                {% endif %}
+            <div class="container">
+
+                <paper-card>
+            <div class="card-content">
+                <juicy-ace-editor theme="ace/theme/monokai" mode="ace/mode/html" style="height: 270px">// ENTER your code here</juicy-ace-editor>
+
             </div>
-            <div class="col-md-8">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h5><a href="{% url 'blog:post-detail' post.id %}">View</a></h5>
-                    </div>
-                    <div class="panel-body">
-                        {{ post.user }}
-                        {{ post.title }}
-                    </div>
-                </div>
+            <div class="card-actions">
+              <paper-button>Share</paper-button>
+              <paper-button>Explore!</paper-button>
             </div>
-        </div><hr />
-        {% endfor %}
+          </paper-card>
+
+
 
         <!--<iron-pages
             selected="[[page]]"
@@ -100,6 +138,8 @@
           <my-view3 name="view3"></my-view3>
           <my-view404 name="view404"></my-view404>
         </iron-pages>-->
-      </app-header-layout>
+
+    </app-drawer-layout>
+
 
 {% endblock %}
