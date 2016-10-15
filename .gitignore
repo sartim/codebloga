@@ -69,3 +69,6 @@ bower_components/
 
 # media
 media/
+
+# .vscode
+.vscode/
