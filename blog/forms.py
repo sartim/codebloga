@@ -6,6 +6,7 @@ from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth.forms import UserCreationForm
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth.models import User  # fill in custom user info then save it
+from .models import Post
 
 
 class BootstrapAuthenticationForm(AuthenticationForm):
@@ -61,3 +62,10 @@ class MyRegistrationForm(UserCreationForm):
             user.save()
 
         return user
+
+
+class PostForm(forms.ModelForm):
+
+    class Meta:
+        model = Post
+        fields = ('title', 'text',)

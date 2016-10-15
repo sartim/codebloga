@@ -1,14 +1,16 @@
 from django.core.urlresolvers import reverse_lazy
 from django.http import HttpRequest, HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.template import RequestContext
 from datetime import datetime
 from django.contrib.auth.forms import UserCreationForm
 from django.core.context_processors import csrf
 from django.contrib import auth
+from django.utils import timezone
 from django.views import generic
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
+from blog.forms import PostForm
 from .models import Post
 
 
@@ -21,26 +23,49 @@ class HomeView(generic.ListView):
         return Post.objects.all()
 
 
-class PostDetailView(generic.DetailView):
-        model = Post
-        template_name = 'blog/post_detail.html'
+# Create your views here.
+def post_list(request):
+    posts = Post.objects.filter(published_date__lte=timezone.now()).order_by('published_date')
+    return render(request, 'blog/post_list.html', {'posts': posts})
 
 
-class PostCreate(CreateView):
-    model = Post
-    fields = ['title', 'image', 'code', 'content', 'draft', 'publish']
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    return render(request, 'blog/post_detail.html', {'post': post})
 
 
-class PostUpdate(UpdateView):
-    model = Post
-    template_name = 'blog/post_form.html'
-    fields = ['title', 'image', 'code', 'content', 'draft', 'publish']
+def post_new(request):
+    form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
 
 
-class PostDelete(DeleteView):
-    model = Post
-    success_url = reverse_lazy('blog:home')
-    template_name = "blog/confirm_delete.html"
+def post_new(request):
+    if request.method == "POST":
+        form = PostForm(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm()
+    return render(request, 'blog/post_edit.html', {'form': form})
+
+
+def post_edit(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    if request.method == "POST":
+        form = PostForm(request.POST, instance=post)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.author = request.user
+            post.published_date = timezone.now()
+            post.save()
+            return redirect('post_detail', pk=post.pk)
+    else:
+        form = PostForm(instance=post)
+    return render(request, 'blog/post_edit.html', {'form': form})
 
 
 def register(request):
