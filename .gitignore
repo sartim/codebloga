@@ -102,3 +102,6 @@ media/
 
 # .vscode
 .vscode/
+
+# sqlite
+.sqlite3
