@@ -104,4 +104,4 @@ media/
 .vscode/
 
 # sqlite
-db.sqlite3
+.sqlite3
