@@ -115,15 +115,10 @@
           </app-toolbar>
             <div class="container">
                 {% for post in posts %}
-                    <paper-card>
+                    <paper-card heading="{{ post.title }}">
                         <div class="card-content">
-
-
-                                            {{ post.published_date }}
-                                        <h1><a href="#">{{ post.title }}</a></h1>
-                                        <juicy-ace-editor theme="ace/theme/monokai" mode="ace/mode/html" style="height: 270px">{{ post.code }}</juicy-ace-editor>
-
-
+                                {{ post.published_date }}
+                            <juicy-ace-editor theme="ace/theme/monokai" mode="ace/mode/html" style="height: 270px">{{ post.code }}</juicy-ace-editor>
                         </div>
 
                    <!-- <div class="card-actions">
