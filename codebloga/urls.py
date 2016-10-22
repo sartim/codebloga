@@ -21,11 +21,12 @@ from django.contrib.auth.views import login, logout
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from blog.views import HomeView, register, register_success
+from blog.views import HomeView, register, register_success, post_list
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', HomeView.as_view(), name='home'),
+    # url(r'^$', post_list, name='home'),
     url(r'^blog/', include('blog.urls', namespace="blog")),
     url(r'^register', register, name='register'),
     url(r'^register_success$', register_success, name='register_success'),

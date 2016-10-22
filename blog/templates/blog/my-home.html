@@ -114,42 +114,27 @@
             <div main-title>CODEBLOGA</div>
           </app-toolbar>
             <div class="container">
-
-                <paper-card>
-            <div class="card-content">
-
-                <div class="container">
-    {% for post in all_posts %}
-<div class="row">
-    <div class="col-md-4">
-        {% if post.image %}
-        <img src="{{ post.image.url }}" style="width:100px; height:100px" class="img-responsive">
-        {% endif %}
-    </div>
-    <div class="col-md-8">
-        <div class="panel panel-primary">
-            <div class="panel-heading">
-                <h5><a href="{% url 'blog:post-detail' post.id %}">View</a></h5>
-            </div>
-            <div class="panel-body">
-                {{ post.user }}
-                {{ post.title }}
-                <juicy-ace-editor theme="ace/theme/monokai" mode="ace/mode/html" style="height: 270px">{{ post.code }}</juicy-ace-editor>
-            </div>
-        </div>
-    </div>
-</div><hr />
-{% endfor %}
-</div>
+                {% for post in posts %}
+                    <paper-card>
+                        <div class="card-content">
 
 
-            </div>
-           <!-- <div class="card-actions">
-              <paper-button>Share</paper-button>
-              <paper-button>Explore!</paper-button>
-            </div>-->
-          </paper-card>
+                                            {{ post.published_date }}
+                                        <h1><a href="#">{{ post.title }}</a></h1>
+                                        <juicy-ace-editor theme="ace/theme/monokai" mode="ace/mode/html" style="height: 270px">{{ post.code }}</juicy-ace-editor>
 
+
+                        </div>
+
+                   <!-- <div class="card-actions">
+                      <paper-button>Share</paper-button>
+                      <paper-button>Explore!</paper-button>
+                    </div>-->
+                    </paper-card>
+                    <p>&nbsp;</p>
+                {% endfor %}
+
+             </div>
     </app-drawer-layout>
 
 

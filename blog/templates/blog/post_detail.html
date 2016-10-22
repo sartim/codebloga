@@ -1,43 +1,17 @@
 {% extends 'blog/base.html' %}
-{% block content %}
-<div class="container">
-   <div class="row">
-      <div class="col-md-3">
-         <div class="panel">
-            <div class="panel-heading"><h4></h4></div>
-            <div class="panel-body">
-                {% if post.image %}
-               <img src="{{ post.image.url}}" width="100" height="100" alt="">
-                {% endif %}
-               <div class="row">
-                  <div class="col-sm-6">
-                     {{ post.title }}
-                  </div>
-                  <div class="col-sm-6">
-                     {{ post.publish }}
-                  </div>
-               </div>
-                <div class="row">
-                    <div class="col-sm-4">
-                        <a class="btn btn-block btn-primary" href="/">Blog</a>
-                    </div>
-                    <div class="col-sm-4">
-                        <a class="btn btn-block btn-primary" href="{% url 'blog:post-update' post.id %}">Update</a>
-                    </div>
-                    <div class="col-sm-4">
-                      <a class="btn btn-block btn-primary" href="{% url 'blog:post-delete' post.id %}">Delete</a>
-                    </div>
-                </div>
-            </div>
-         </div>
-      </div>
-       <div class="col-md-9">
 
-      {{ post.content }}
-      </div>
-      <div class="col-md-9">
+{% block content %}
+    <div class="post">
+        {% if post.published_date %}
+            <div class="date">
+                {{ post.published_date }}
+            </div>
+        {% endif %}
+
+        {% if user.is_authenticated %}
+             <a class="btn btn-default" href="#"><span class="glyphicon glyphicon-pencil"></span></a>
+        {% endif %}
+        <h1>{{ post.title }}</h1>
         <juicy-ace-editor theme="ace/theme/monokai" mode="ace/mode/html" style="height: 270px">{{ post.code }}</juicy-ace-editor>
-      </div>
     </div>
-</div>
 {% endblock %}
